@@ -2,9 +2,13 @@ import win32com.client as win32  # 한/글 열기 위한 모듈
 # import win32gui  # 한/글 창을 백그라운드로 숨기기 위한 모듈
 
 
+count = int(input("몇 페이지를 복사할 것인가요? : ")) + 2
+content = input("무엇을 입력할 것인가요? : ")
+
 hwp = win32.gencache.EnsureDispatch("HWPFrame.HwpObject")  # 한/글 열기
 # hwnd = win32gui.FindWindow(None, '빈 문서 1 - 한글')  # 한/글 창의 윈도우핸들값을 알아내서
 # win32gui.ShowWindow(hwnd, 0)  # 한/글 창을 백그라운드로 숨김
+
 hwp.RegisterModule("FilePathCheckDLL", "FilePathCheckerModule")  # 보안모듈 적용(파일 열고닫을 때 팝업이 안나타남)
 hwp.Open(r"C:\Users\user\Documents\Python_Automation-Study\school_assignment\date_source\test.hwp")  # 수정할 한/글 파일 열기
 
@@ -14,8 +18,6 @@ hwp.Run('SelectAll')  # Ctrl-A (전체선택)
 hwp.Run('Copy')  # Ctrl-C (복사)
 hwp.MovePos(3)  # 문서 끝으로 이동
 
-count = int(input("몇 페이지를 복사할 것인가요?"))
-content = input("무엇을 입력할 것인가요?")
 print('페이지 복사를 시작합니다.')
 
 for i in range(count-1):
