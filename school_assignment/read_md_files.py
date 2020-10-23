@@ -1,9 +1,5 @@
 import os
 from typing import List
-import shutil  # 파일복사용 모듈
-import win32com.client as win32  # 한/글 열기 위한 모듈
-# import win32gui  # 한/글 창을 백그라운드로 숨기기 위한 모듈
-import time
 
 java_md_file_path = r"C:\Users\user\Documents\Python_Automation-Study\school_assignment\date_source\java"
 
