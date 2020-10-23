@@ -12,7 +12,7 @@ def get_files_name() -> list:
     file_list: List[str] = os.listdir(java_md_file_path)
     file_list.remove("11. 기본 API 클래스")
     lesson_10_list: List[str] = os.listdir(java_md_file_path + r"\11. 기본 API 클래스")
-    # file_list.extend(["11. 기본 API 클래스\\" + name for name in lesson_10_list])
+    file_list.extend(["11. 기본 API 클래스\\" + name for name in lesson_10_list])
     file_list.sort()
     return file_list
 
@@ -26,5 +26,6 @@ def get_files_text(name_list: list) -> list:
 
 
 if __name__ == '__main__':
-    print(*get_files_name(), sep="\n")
-    print(*get_files_text(get_files_name()), sep="\n")
+    file_names = get_files_name()
+    print(*file_names, sep="\n")
+    print(*get_files_text(file_names), sep="\n")
