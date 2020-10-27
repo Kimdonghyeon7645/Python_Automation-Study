@@ -12,11 +12,10 @@ def write_hwp_file(content_list: list):
     hwp.Run('Copy')  # Ctrl-C (복사)
     hwp.MovePos(3)  # 문서 끝으로 이동
 
-    print('페이지 복사를 시작합니다.')
+    print(f'총 {len(content_list)-1}행 추출, 복사를 시작합니다.')
     for i in range(len(content_list)-1):
         hwp.Run('Paste')  # Ctrl-V (붙여넣기)
         hwp.MovePos(3)  # 문서 끝으로 이동
-        print(f"{i}페이지 복사 완료")
 
     for page in range(len(content_list)):  # 한/글 모든 페이지를 전부 순회
         for field in field_list:  # 모든 누름틀 순회
@@ -25,5 +24,7 @@ def write_hwp_file(content_list: list):
 
 
 if __name__ == '__main__':
-    content = ["테스형", "보고있다면", "나에게", "정답을 알려줘"]
-    write_hwp_file(content)
+    from school_assignment.read_md_files import *
+    from school_assignment.edit_content import *
+
+    write_hwp_file(edit_content(get_files_text(get_files_name())))
